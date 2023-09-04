@@ -41,17 +41,26 @@ coordinates = [(45,40), (145,40),(245,40),(345,40), (445,40), (545,40),(645,40),
 
 
 class DraggableSvgItem(QGraphicsSvgItem):
+
     def __init__(self, svg_file, numberFigure = 6):
         self.numberFigure = numberFigure
+        self.positionBeforeDrag = None
         super().__init__(svg_file)
         self.setFlag(QGraphicsSvgItem.ItemIsMovable)
 
     def mousePressEvent(self, event):
-        print(self.numberFigure)
+        self.positionBeforeDrag = self.pos()
         super().mousePressEvent(event)
 
     def mouseReleaseEvent(self, event):
-        pozycja = self.pos()
-        nearest_coordinate = find_nearest_coordinate(pozycja.x(),pozycja.y(),coordinates)
-        self.setPos(nearest_coordinate[0], nearest_coordinate[1])
+
+        position = self.pos()
+        if position.x() < 0 or position.x() > 800 or position.y() < 0 or position.y() > 800:
+            self.setPos(self.positionBeforeDrag)
+        else:
+            nearest_coordinate = find_nearest_coordinate(position.x(),position.y(),coordinates)
+            self.setPos(nearest_coordinate[0], nearest_coordinate[1])
+
+            self.positionBeforeDrag = None
         super().mouseReleaseEvent(event)
+
