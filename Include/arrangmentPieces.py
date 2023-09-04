@@ -15,35 +15,35 @@ class arrangment(QGraphicsScene):
 
         #black figure
         #--------------------------------------------------
-        BlackRock1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bR.svg')
+        BlackRock1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bR.svg',1)
         BlackRock1.setPos(45, 40)
         self.scene.addItem(BlackRock1)
 
-        BlackHorse1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bN.svg')
+        BlackHorse1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bN.svg',2)
         BlackHorse1.setPos(145, 40)
         self.scene.addItem(BlackHorse1)
 
-        BlackBishop1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bB.svg')
+        BlackBishop1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bB.svg',3)
         BlackBishop1.setPos(245, 40)
         self.scene.addItem(BlackBishop1)
 
-        BlackQueen = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bQ.svg')
+        BlackQueen = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bQ.svg',4)
         BlackQueen.setPos(345, 40)
         self.scene.addItem(BlackQueen)
 
-        BlackKing = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bK.svg')
+        BlackKing = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bK.svg',5)
         BlackKing.setPos(445, 40)
         self.scene.addItem(BlackKing)
 
-        BlackBishop2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bB.svg')
+        BlackBishop2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bB.svg',3)
         BlackBishop2.setPos(545, 40)
         self.scene.addItem(BlackBishop2)
 
-        BlackHorse2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bN.svg')
+        BlackHorse2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bN.svg',2)
         BlackHorse2.setPos(645, 40)
         self.scene.addItem(BlackHorse2)
 
-        BlackRock2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bR.svg')
+        BlackRock2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bR.svg',1)
         BlackRock2.setPos(745, 40)
         self.scene.addItem(BlackRock2)
 
@@ -82,35 +82,35 @@ class arrangment(QGraphicsScene):
         #white figure
         #--------------------------------------------------------
 
-        WhiteRock1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wR.svg')
+        WhiteRock1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wR.svg',1)
         WhiteRock1.setPos(45, 740)
         self.scene.addItem(WhiteRock1)
 
-        WhiteHorse1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wN.svg')
+        WhiteHorse1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wN.svg',2)
         WhiteHorse1.setPos(145, 740)
         self.scene.addItem(WhiteHorse1)
 
-        WhiteBishop1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wB.svg')
+        WhiteBishop1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wB.svg', 3)
         WhiteBishop1.setPos(245, 740)
         self.scene.addItem(WhiteBishop1)
 
-        WhiteQueen = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wQ.svg')
+        WhiteQueen = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wQ.svg',4)
         WhiteQueen.setPos(345, 740)
         self.scene.addItem(WhiteQueen)
 
-        WhiteKing = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wK.svg')
+        WhiteKing = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wK.svg',5)
         WhiteKing.setPos(445, 740)
         self.scene.addItem(WhiteKing)
 
-        WhiteBishop2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wB.svg')
+        WhiteBishop2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wB.svg',3)
         WhiteBishop2.setPos(545, 740)
         self.scene.addItem(WhiteBishop2)
 
-        WhiteHorse2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wN.svg')
+        WhiteHorse2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wN.svg',2)
         WhiteHorse2.setPos(645, 740)
         self.scene.addItem(WhiteHorse2)
 
-        WhiteRock2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wR.svg')
+        WhiteRock2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\wR.svg',1)
         WhiteRock2.setPos(745, 740)
         self.scene.addItem(WhiteRock2)
 
