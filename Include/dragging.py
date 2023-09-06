@@ -17,28 +17,7 @@ from Pieces import Pieces
 #-------------------------------
 
 
-def find_nearest_coordinate(x, y, coordinates):
-    def distance(coord1, coord2):
-        return math.sqrt((coord1[0] - coord2[0])**2 + (coord1[1] - coord2[1])**2)
-
-    nearest_coord = coordinates[0]
-    min_distance = distance((x, y), nearest_coord)
-
-    for coord in coordinates:
-        dist = distance((x, y), coord)
-        if dist < min_distance:
-            min_distance = dist
-            nearest_coord = coord
-    return nearest_coord
-
-class DraggableSvgItem(QGraphicsSvgItem):
-
-    def __init__(self, svg_file, numberFigure = 6, colour = "white"):
-        self.numberFigure = numberFigure
-        self.positionBeforeDrag = None
-        self.colour = colour
-
-        self.coordinates = [[45, 40, True], [145, 40, True], [245, 40, True], [345, 40, True], [445, 40, True],
+coordinates = [[45, 40, True], [145, 40, True], [245, 40, True], [345, 40, True], [445, 40, True],
                             [545, 40, True], [645, 40, True], [745, 40, True],
                             [45, 140, True], [145, 140, True], [245, 140, True], [345, 140, True], [445, 140, True],
                             [545, 140, True], [645, 140, True], [745, 140, True],
@@ -59,13 +38,34 @@ class DraggableSvgItem(QGraphicsSvgItem):
                             [45, 740, True], [145, 740, True], [245, 740, True], [345, 740, True], [445, 740, True],
                             [545, 740, True], [645, 740, True], [745, 740, True]]
 
+def find_nearest_coordinate(x, y):
+    def distance(coord1, coord2):
+        return math.sqrt((coord1[0] - coord2[0])**2 + (coord1[1] - coord2[1])**2)
+
+    nearest_coord = coordinates[0]
+    min_distance = distance((x, y), nearest_coord)
+
+    for coord in coordinates:
+        dist = distance((x, y), coord)
+        if dist < min_distance:
+            min_distance = dist
+            nearest_coord = coord
+    return nearest_coord
+
+class DraggableSvgItem(QGraphicsSvgItem):
+
+    def __init__(self, svg_file, numberFigure = 6, colour = "white"):
+        self.numberFigure = numberFigure
+        self.positionBeforeDrag = None
+        self.colour = colour
+
         super().__init__(svg_file)
         self.setFlag(QGraphicsSvgItem.ItemIsMovable)
 
     def mousePressEvent(self, event):
         self.setFlag(QGraphicsSvgItem.ItemIsMovable, True)
         self.positionBeforeDrag = self.pos()
-        self.Pieces = Pieces(self.coordinates, self.positionBeforeDrag)
+        self.Pieces = Pieces(self.positionBeforeDrag)
 
         super().mousePressEvent(event)
 
@@ -79,8 +79,8 @@ class DraggableSvgItem(QGraphicsSvgItem):
 
     def mouseReleaseEvent(self, event):
         position = self.pos()
-        nearest_coordinate = find_nearest_coordinate(position.x(),position.y(),self.coordinates)
-        if self.Pieces.moving(nearest_coordinate):
+        nearest_coordinate = find_nearest_coordinate(position.x(),position.y())
+        if self.Pieces.moving(nearest_coordinate, self.positionBeforeDrag):
             self.setPos(nearest_coordinate[0], nearest_coordinate[1])
         else:
             self.setPos(self.positionBeforeDrag)
