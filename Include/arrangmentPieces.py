@@ -15,67 +15,67 @@ class arrangment(QGraphicsScene):
 
         #black figure
         #--------------------------------------------------
-        BlackRock1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bR.svg',1)
+        BlackRock1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bR.svg',1,"black")
         BlackRock1.setPos(45, 40)
         self.scene.addItem(BlackRock1)
 
-        BlackHorse1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bN.svg',2)
+        BlackHorse1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bN.svg',2 ,"black")
         BlackHorse1.setPos(145, 40)
         self.scene.addItem(BlackHorse1)
 
-        BlackBishop1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bB.svg',3)
+        BlackBishop1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bB.svg',3,"black")
         BlackBishop1.setPos(245, 40)
         self.scene.addItem(BlackBishop1)
 
-        BlackQueen = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bQ.svg',4)
+        BlackQueen = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bQ.svg',4,"black")
         BlackQueen.setPos(345, 40)
         self.scene.addItem(BlackQueen)
 
-        BlackKing = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bK.svg',5)
+        BlackKing = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bK.svg',5,"black")
         BlackKing.setPos(445, 40)
         self.scene.addItem(BlackKing)
 
-        BlackBishop2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bB.svg',3)
+        BlackBishop2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bB.svg',3,"black")
         BlackBishop2.setPos(545, 40)
         self.scene.addItem(BlackBishop2)
 
-        BlackHorse2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bN.svg',2)
+        BlackHorse2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bN.svg',2,"black")
         BlackHorse2.setPos(645, 40)
         self.scene.addItem(BlackHorse2)
 
-        BlackRock2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bR.svg',1)
+        BlackRock2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bR.svg',1,"black")
         BlackRock2.setPos(745, 40)
         self.scene.addItem(BlackRock2)
 
-        BlackPawn1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg')
+        BlackPawn1 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg',6,"black")
         BlackPawn1.setPos(45, 140)
         self.scene.addItem(BlackPawn1)
 
-        BlackPawn2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg')
+        BlackPawn2 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg',6,"black")
         BlackPawn2.setPos(145, 140)
         self.scene.addItem(BlackPawn2)
 
-        BlackPawn3 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg')
+        BlackPawn3 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg',6,"black")
         BlackPawn3.setPos(245, 140)
         self.scene.addItem(BlackPawn3)
 
-        BlackPawn4 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg')
+        BlackPawn4 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg',6,"black")
         BlackPawn4.setPos(345, 140)
         self.scene.addItem(BlackPawn4)
 
-        BlackPawn5 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg')
+        BlackPawn5 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg',6,"black")
         BlackPawn5.setPos(445, 140)
         self.scene.addItem(BlackPawn5)
 
-        BlackPawn6 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg')
+        BlackPawn6 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg',6,"black")
         BlackPawn6.setPos(545, 140)
         self.scene.addItem(BlackPawn6)
 
-        BlackPawn7 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg')
+        BlackPawn7 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg',6,"black")
         BlackPawn7.setPos(645, 140)
         self.scene.addItem(BlackPawn7)
 
-        BlackPawn8 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg')
+        BlackPawn8 = DraggableSvgItem('C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\bP.svg',6,"black")
         BlackPawn8.setPos(745, 140)
         self.scene.addItem(BlackPawn8)
 
