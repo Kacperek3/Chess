@@ -5,9 +5,9 @@ class Pieces:
     def __init__(self, currenPosition):
         self.currenPosition = currenPosition
 
-    def moving(self, releasedPosition, positionBeforeDrag):
+    def moving(self, releasedPosition):
         released_x, released_y = releasedPosition[:2]
-        drag_x, drag_y = positionBeforeDrag.x(), positionBeforeDrag.y()
+        drag_x, drag_y = self.currenPosition.x(), self.currenPosition.y()
 
         released_punkt = None
         drag_punkt = None
@@ -28,4 +28,19 @@ class Pieces:
 
 
 class Pawn(Pieces):
-    print("test")
+    def __init__(self, currenPosition):
+        self.currenPosition = currenPosition
+
+    def legalPawnMove(self,releasedPosition):
+        index = None
+        for i, point in enumerate(dragging.coordinates):
+            if point[0] == self.currenPosition.x() and point[1] == self.currenPosition.y():
+                print("ala")
+                index = i
+                break
+        print(index)
+        if releasedPosition[:2] == dragging.coordinates[index + 8][:2] and not dragging.coordinates[index + 8][2]:
+            dragging.coordinates[i+8][2] = True
+            return True
+        return False
+

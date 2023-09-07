@@ -1,8 +1,10 @@
 import sys
 import math
 from PyQt5.QtSvg import QGraphicsSvgItem
+from PyQt5.QtWidgets import QGraphicsView
+from PyQt5.QtSvg import QGraphicsSvgItem
 from PyQt5.QtGui import QCursor
-from Pieces import Pieces
+from Pieces import Pieces, Pawn
 
 
 #-------------------------------
@@ -53,19 +55,24 @@ def find_nearest_coordinate(x, y):
     return nearest_coord
 
 class DraggableSvgItem(QGraphicsSvgItem):
-
-    def __init__(self, svg_file, numberFigure = 6, colour = "white"):
+    def __init__(self, svg_file, numberFigure, colour, mainScene):
+        self.scene = mainScene
         self.numberFigure = numberFigure
         self.positionBeforeDrag = None
         self.colour = colour
-
         super().__init__(svg_file)
         self.setFlag(QGraphicsSvgItem.ItemIsMovable)
+        self.red_square = None
 
     def mousePressEvent(self, event):
         self.setFlag(QGraphicsSvgItem.ItemIsMovable, True)
         self.positionBeforeDrag = self.pos()
-        self.Pieces = Pieces(self.positionBeforeDrag)
+        self.Pieces = Pawn(self.positionBeforeDrag)
+
+        # adding a red square to program
+        self.red_square = QGraphicsSvgItem("C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\czerwony_kwadrat.svg")
+        self.red_square.setPos(self.positionBeforeDrag.x()-18,self.positionBeforeDrag.y()-13)
+        self.scene.addItem(self.red_square)
 
         super().mousePressEvent(event)
 
@@ -79,10 +86,15 @@ class DraggableSvgItem(QGraphicsSvgItem):
 
     def mouseReleaseEvent(self, event):
         position = self.pos()
+
         nearest_coordinate = find_nearest_coordinate(position.x(),position.y())
-        if self.Pieces.moving(nearest_coordinate, self.positionBeforeDrag):
+        if self.Pieces.legalPawnMove(nearest_coordinate):
             self.setPos(nearest_coordinate[0], nearest_coordinate[1])
         else:
             self.setPos(self.positionBeforeDrag)
+
         self.positionBeforeDrag = None
+
+        self.scene.removeItem(self.red_square)
+
         super().mouseReleaseEvent(event)
