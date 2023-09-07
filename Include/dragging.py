@@ -4,7 +4,7 @@ from PyQt5.QtSvg import QGraphicsSvgItem
 from PyQt5.QtWidgets import QGraphicsView
 from PyQt5.QtSvg import QGraphicsSvgItem
 from PyQt5.QtGui import QCursor
-from Pieces import Pieces, Pawn
+from Pieces import Pieces, Pawn, Horse
 
 
 #-------------------------------
@@ -67,7 +67,7 @@ class DraggableSvgItem(QGraphicsSvgItem):
     def mousePressEvent(self, event):
         self.setFlag(QGraphicsSvgItem.ItemIsMovable, True)
         self.positionBeforeDrag = self.pos()
-        self.Pieces = Pawn(self.positionBeforeDrag)
+        self.Pieces = Horse(self.positionBeforeDrag)
 
         # adding a red square to program
         self.red_square = QGraphicsSvgItem("C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\czerwony_kwadrat.svg")
@@ -88,7 +88,7 @@ class DraggableSvgItem(QGraphicsSvgItem):
         position = self.pos()
 
         nearest_coordinate = find_nearest_coordinate(position.x(),position.y())
-        if self.Pieces.legalPawnMove(nearest_coordinate):
+        if self.Pieces.legalHorseMove(nearest_coordinate):
             self.setPos(nearest_coordinate[0], nearest_coordinate[1])
         else:
             self.setPos(self.positionBeforeDrag)
