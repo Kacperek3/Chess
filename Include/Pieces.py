@@ -93,3 +93,98 @@ class Horse(Pieces):
             dragging.coordinates[index][2] = False
             return True
         return False
+
+class Bishop(Pieces):
+    def __init__(self, currenPosition):
+        self.currenPosition = currenPosition
+
+    def legalBishopMove(self, releasedPosition):
+        index = None
+        targetIndex = None
+        memory = None
+
+        for i, point in enumerate(dragging.coordinates):
+            if point[0] == self.currenPosition.x() and point[1] == self.currenPosition.y():
+                index = i
+                memory = i
+            if point[0] == releasedPosition[0] and point[1] == releasedPosition[1]:
+                targetIndex = i
+        if (self.recursionRightUp(index, targetIndex, memory)
+                or self.recursionLeftUp(index,targetIndex,memory)
+                or self.recursionRightDown(index,targetIndex,memory)
+                or self.recursionLeftDown(index,targetIndex,memory)):
+            return True
+        else:
+            return False
+
+    def recursionRightUp(self, index, targetIndex, memory):
+        if index == targetIndex:
+            dragging.coordinates[targetIndex][2] = True
+            dragging.coordinates[memory][2] = False
+            return True
+        if (dragging.coordinates[index - 7][2] == False
+                and index != 7
+                and index != 15
+                and index != 23
+                and index != 31
+                and index != 39
+                and index != 47
+                and index != 55
+                and index != 63):
+            return self.recursionRightUp(index - 7, targetIndex, memory)
+        return False
+
+    def recursionLeftUp(self, index, targetIndex, memory):
+        if index == targetIndex:
+            dragging.coordinates[targetIndex][2] = True
+            dragging.coordinates[memory][2] = False
+            return True
+        if (dragging.coordinates[index - 9][2] == False
+                and index != 0
+                and index != 8
+                and index != 16
+                and index != 24
+                and index != 32
+                and index != 40
+                and index != 48
+                and index != 56):
+            return self.recursionLeftUp(index - 9, targetIndex, memory)
+        return False
+
+    def recursionRightDown(self, index, targetIndex, memory):
+        if index == targetIndex:
+            dragging.coordinates[targetIndex][2] = True
+            dragging.coordinates[memory][2] = False
+            return True
+        if index + 9 > 63:
+            return False
+        if (dragging.coordinates[index + 9][2] == False
+                and index != 7
+                and index != 15
+                and index != 23
+                and index != 31
+                and index != 39
+                and index != 47
+                and index != 55
+                and index != 63):
+            return self.recursionRightDown(index + 9, targetIndex, memory)
+        return False
+
+    def recursionLeftDown(self, index, targetIndex, memory):
+        if index == targetIndex:
+            dragging.coordinates[targetIndex][2] = True
+            dragging.coordinates[memory][2] = False
+            return True
+        if index + 7 > 63:
+            return False
+        if (dragging.coordinates[index + 7][2] == False
+                and index != 0
+                and index != 8
+                and index != 16
+                and index != 24
+                and index != 32
+                and index != 40
+                and index != 48
+                and index != 56):
+            return self.recursionLeftDown(index + 7, targetIndex, memory)
+        return False
