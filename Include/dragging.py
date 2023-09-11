@@ -4,7 +4,7 @@ from PyQt5.QtSvg import QGraphicsSvgItem
 from PyQt5.QtWidgets import QGraphicsView
 from PyQt5.QtSvg import QGraphicsSvgItem
 from PyQt5.QtGui import QCursor
-from Pieces import Pieces, Pawn, Horse, Bishop
+from Pieces import Pieces, Pawn, Horse, Bishop, Rock, Queen, King
 
 
 #-------------------------------
@@ -67,13 +67,24 @@ class DraggableSvgItem(QGraphicsSvgItem):
     def mousePressEvent(self, event):
         self.setFlag(QGraphicsSvgItem.ItemIsMovable, True)
         self.positionBeforeDrag = self.pos()
-        self.Pieces = Bishop(self.positionBeforeDrag)
+
+
+        self.Rock = Rock(self.positionBeforeDrag)
+
+        self.Horse = Horse(self.positionBeforeDrag)
+
+        self.Bishop = Bishop(self.positionBeforeDrag)
+
+        self.Queen = Queen(self.positionBeforeDrag)
+
+        self.King = King(self.positionBeforeDrag)
+
+        self.Pawn = Pawn(self.positionBeforeDrag)
 
         # adding a red square to program
         self.red_square = QGraphicsSvgItem("C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\czerwony_kwadrat.svg")
         self.red_square.setPos(self.positionBeforeDrag.x()-18,self.positionBeforeDrag.y()-13)
         self.scene.addItem(self.red_square)
-
         super().mousePressEvent(event)
 
     def mouseMoveEvent(self, event):
@@ -88,10 +99,43 @@ class DraggableSvgItem(QGraphicsSvgItem):
         position = self.pos()
 
         nearest_coordinate = find_nearest_coordinate(position.x(),position.y())
-        if self.Pieces.legalBishopMove(nearest_coordinate):
-            self.setPos(nearest_coordinate[0], nearest_coordinate[1])
-        else:
-            self.setPos(self.positionBeforeDrag)
+
+        if self.numberFigure == 1:
+            if self.Rock.legalRockMove(nearest_coordinate):
+                self.setPos(nearest_coordinate[0], nearest_coordinate[1])
+            else:
+                self.setPos(self.positionBeforeDrag)
+
+        elif self.numberFigure == 2:
+            if self.Horse.legalHorseMove(nearest_coordinate):
+                self.setPos(nearest_coordinate[0], nearest_coordinate[1])
+            else:
+                self.setPos(self.positionBeforeDrag)
+
+        elif self.numberFigure == 3:
+            if self.Bishop.legalBishopMove(nearest_coordinate):
+                self.setPos(nearest_coordinate[0], nearest_coordinate[1])
+            else:
+                self.setPos(self.positionBeforeDrag)
+
+        elif self.numberFigure == 4:
+            if self.Queen.legalQueenMove(nearest_coordinate):
+                self.setPos(nearest_coordinate[0], nearest_coordinate[1])
+            else:
+                self.setPos(self.positionBeforeDrag)
+
+        elif self.numberFigure == 5:
+            if self.King.legalKingMove(nearest_coordinate):
+                self.setPos(nearest_coordinate[0], nearest_coordinate[1])
+            else:
+                self.setPos(self.positionBeforeDrag)
+
+        elif self.numberFigure == 6:
+            if self.Pawn.legalPawnMove(nearest_coordinate):
+                self.setPos(nearest_coordinate[0], nearest_coordinate[1])
+            else:
+                self.setPos(self.positionBeforeDrag)
+
 
         self.positionBeforeDrag = None
 
