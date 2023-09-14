@@ -81,8 +81,6 @@ class DraggableSvgItem(QGraphicsSvgItem):
             5: King,
             6: Pawn
         }
-
-
     def mousePressEvent(self, event):
         self.setFlag(QGraphicsSvgItem.ItemIsMovable, True)
         self.positionBeforeDrag = self.pos()
@@ -90,8 +88,8 @@ class DraggableSvgItem(QGraphicsSvgItem):
         self.current_figure = self.figure_classes.get(self.numberFigure)(self.positionBeforeDrag, self.color, self.scene)
 
         # adding a red square to program
-        self.red_square = QGraphicsSvgItem("C:\\Users\\kapis\\Desktop\\Python\\Pycharm\\chess\\Include\\images\\czerwony_kwadrat.svg")
-        self.red_square.setPos(self.positionBeforeDrag.x()-18,self.positionBeforeDrag.y()-13)
+        self.red_square = QGraphicsSvgItem("C:\\Users\\kapis\\OneDrive - Politechnika Gdańska\\Pulpit\\Python\\Pycharm\\chess\\Include\\images\\czerwony_kwadrat.svg")
+        self.red_square.setPos(self.positionBeforeDrag.x() - 18, self.positionBeforeDrag.y() - 13)
         self.scene.addItem(self.red_square)
         super().mousePressEvent(event)
 

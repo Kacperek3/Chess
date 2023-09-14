@@ -12,23 +12,97 @@ class Pawn(Pieces):
     def __init__(self, currenPosition, color, scene):
         self.currenPosition = currenPosition
         self.color = color
+        self.scene = scene
 
-    def validate_move(self,releasedPosition):
+    def validate_move(self, releasedPosition):
         index = None
+        targetIndex = None
+
         for i, point in enumerate(dragging.coordinates):
             if point[0] == self.currenPosition.x() and point[1] == self.currenPosition.y():
                 index = i
-                break
+            if point[0] == releasedPosition[0] and point[1] == releasedPosition[1]:
+                targetIndex = i
+
         if self.color == "black":
-            if releasedPosition[:2] == dragging.coordinates[index + 8][:2] and not dragging.coordinates[index + 8][2]:
-                dragging.coordinates[i+8][2] = True
-                dragging.coordinates[index][2] = False
-                return True
+            if index == 8 or index == 9 or index == 10 or index == 11 or index == 12 or index == 13 or index == 14 or index == 15:
+                if ((releasedPosition[2] == False and index + 8 == targetIndex)
+                    or (releasedPosition[2] == False and index + 16 == targetIndex)):
+                    dragging.coordinates[targetIndex][2] = True
+                    dragging.coordinates[index][2] = False
+                    dragging.coordinates[targetIndex][3] = dragging.coordinates[index][3]
+                    dragging.coordinates[index][3] = None
+                    return True
+
+                elif ((releasedPosition[2] == True and index + 7 == targetIndex)
+                    or (releasedPosition[2] == True and index + 9 == targetIndex)):
+                    if self.friendlyFire(targetIndex):
+                        return False
+
+                    self.scene.removeItem(dragging.coordinates[targetIndex][3])
+                    dragging.coordinates[targetIndex][3] = dragging.coordinates[index][3]
+                    dragging.coordinates[index][3] = None
+                    dragging.coordinates[targetIndex][2] = True
+                    dragging.coordinates[index][2] = False
+                    return True
+            else:
+                if releasedPosition[2] == False and index + 8 == targetIndex:
+                    dragging.coordinates[targetIndex][2] = True
+                    dragging.coordinates[index][2] = False
+                    dragging.coordinates[targetIndex][3] = dragging.coordinates[index][3]
+                    dragging.coordinates[index][3] = None
+                    return True
+                elif ((releasedPosition[2] == True and index + 7 == targetIndex)
+                    or (releasedPosition[2] == True and index + 9 == targetIndex)):
+                    if self.friendlyFire(targetIndex):
+                        return False
+
+                    self.scene.removeItem(dragging.coordinates[targetIndex][3])
+                    dragging.coordinates[targetIndex][3] = dragging.coordinates[index][3]
+                    dragging.coordinates[index][3] = None
+                    dragging.coordinates[targetIndex][2] = True
+                    dragging.coordinates[index][2] = False
+                    return True
+
         else:
-            if releasedPosition[:2] == dragging.coordinates[index - 8][:2] and not dragging.coordinates[index - 8][2]:
-                dragging.coordinates[i-8][2] = True
-                dragging.coordinates[index][2] = False
-                return True
+            if index == 48 or index == 49 or index == 50 or index == 51 or index == 52 or index == 53 or index == 54 or index == 55:
+                if ((releasedPosition[2] == False and index - 8 == targetIndex)
+                        or (releasedPosition[2] == False and index - 16 == targetIndex)):
+                    dragging.coordinates[targetIndex][2] = True
+                    dragging.coordinates[index][2] = False
+                    dragging.coordinates[targetIndex][3] = dragging.coordinates[index][3]
+                    dragging.coordinates[index][3] = None
+                    return True
+
+                elif ((releasedPosition[2] == True and index - 7 == targetIndex)
+                      or (releasedPosition[2] == True and index - 9 == targetIndex)):
+                    if self.friendlyFire(targetIndex):
+                        return False
+
+                    self.scene.removeItem(dragging.coordinates[targetIndex][3])
+                    dragging.coordinates[targetIndex][3] = dragging.coordinates[index][3]
+                    dragging.coordinates[index][3] = None
+                    dragging.coordinates[targetIndex][2] = True
+                    dragging.coordinates[index][2] = False
+                    return True
+            else:
+                if releasedPosition[2] == False and index - 8 == targetIndex:
+                    dragging.coordinates[targetIndex][2] = True
+                    dragging.coordinates[index][2] = False
+                    dragging.coordinates[targetIndex][3] = dragging.coordinates[index][3]
+                    dragging.coordinates[index][3] = None
+                    return True
+                elif ((releasedPosition[2] == True and index - 7 == targetIndex)
+                      or (releasedPosition[2] == True and index - 9 == targetIndex)):
+                    if self.friendlyFire(targetIndex):
+                        return False
+
+                    self.scene.removeItem(dragging.coordinates[targetIndex][3])
+                    dragging.coordinates[targetIndex][3] = dragging.coordinates[index][3]
+                    dragging.coordinates[index][3] = None
+                    dragging.coordinates[targetIndex][2] = True
+                    dragging.coordinates[index][2] = False
+                    return True
         return False
 
 
